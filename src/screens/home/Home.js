@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className="container m-auto">
       {posts && posts.map((post) => (
-        <Post post={post}/>
+        <Post post={post} key={post.id}/>
       ))}
     </div>
   );
