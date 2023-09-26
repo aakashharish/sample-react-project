@@ -1,22 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import './Home.css'
 import Post from "../../components/postdisplay/Post";
+import { UseFetch } from "../../hooks/UseFetch";
+
 
 export default function Home() {
-  const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => {
-        if (res.ok) return res.json();
-        else return Error("Ohh No");
-      })
-      .then((json) => setPosts(json));
-  }, []);
+  const {posts, error, loading} = UseFetch("https://jsonplaceholder.typicode.com/posts")
+
   return (
+    <div>
+    
+    
+    
     <div className="container m-auto">
       {posts && posts.map((post) => (
         <Post post={post} key={post.id}/>
       ))}
+      {
+        error && <p>{error}</p>
+      }
+      <div className='loader'>
+      {loading && <div className="spinner"></div>}
+      </div>
+    </div>
+  
     </div>
   );
 }

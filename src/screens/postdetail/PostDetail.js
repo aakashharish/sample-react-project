@@ -16,7 +16,7 @@ export default function PostDetail() {
       <p>{state.body}</p>
       
 
-      <div className="flex justify-end mt-7">
+      <div className="flex justify-end mt-7 mr-14">
         <p className='border border-blue-800 bg-blue-800 py-1 px-2 text-white rounded-md'>Delete</p>
         <p className='border border-blue-800 bg-blue-800 py-1 px-2 ml-4 text-white rounded-md'>Edit</p>
       </div>
