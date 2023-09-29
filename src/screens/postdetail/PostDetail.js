@@ -17,8 +17,8 @@ export default function PostDetail() {
       
 
       <div className="flex justify-end mt-7 mr-14">
-        <p className='border border-blue-800 bg-blue-800 py-1 px-2 text-white rounded-md'>Delete</p>
-        <p className='border border-blue-800 bg-blue-800 py-1 px-2 ml-4 text-white rounded-md'>Edit</p>
+        <button className='bg-red-600 py-1 px-2 text-white rounded-md'>Delete</button>
+        <button className='bg-red-600 py-1 px-2 ml-4 text-white rounded-md'>Edit</button>
       </div>
 
     </div>
