@@ -8,18 +8,30 @@ export function UseFetch(url, method = "GET") {
 
   const optionsData = (data) => {
     if (method === "POST") {
-    setOptions({
-      method:"POST",
-      body: JSON.stringify(data),
-      header:{ "Content-type" : "application/json; charset=UTF-8",},
-    })
-  }
+      setOptions({
+        method: "POST",
+        body: JSON.stringify(data),
+        header: { "Content-type": "application/json; charset=UTF-8" },
+      });
+    }
+    else if (method === "PATCH") {
+      setOptions({
+        method: "PATCH",
+        body: JSON.stringify(data),
+        header: { "Content-type": "application/json; charset=UTF-8" },
+      });
+    }
+    else if (method === "DELETE"){
+      setOptions({
+        method : "DELETE"
+      })
+    }
   };
 
   useEffect(() => {
     const fetchInfo = async (options) => {
       setLoading(true);
-      const response = await fetch(url, {...options});
+      const response = await fetch(url, { ...options });
 
       const jsonResponse = await response.json();
 
@@ -33,8 +45,8 @@ export function UseFetch(url, method = "GET") {
       }
     };
 
-    if(method === "GET") fetchInfo();
-    else if(method === "POST" && options) fetchInfo(options)
+    if (method === "GET") fetchInfo();
+    else if ((method === "POST" || method === "PATCH" || method === "DELETE") && options) fetchInfo(options);
   }, [url, method, options]);
 
   return { posts, error, loading, optionsData };
